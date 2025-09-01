@@ -13,35 +13,55 @@ body {
 body {
   background: #21252b;
   font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main layout with left sidebar */
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #2c313a;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  z-index: 10;
+}
+
+.content {
+  flex: 1;
+  margin-left: 250px;
+  position: relative;
 }
 
 .ag-canvas {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
-
   position: relative;
   visibility: visible;
-
   width: 100%;
   height: 100%;
   padding: 3rem 1rem;
   opacity: 1;
   transition: opacity 0.5s;
-
-  z-index: -1;
-  margin-top: -90px;
 }
+
 .ag-canvas_svg {
   display: block;
   width: 100%;
   height: auto;
   max-height: 100%;
-  margin-left: 1rem;
 }
+
 .ag-canvas_svg path {
   fill: #383d46;
   fill-opacity: 1;
@@ -49,20 +69,6 @@ body {
   stroke-opacity: 1;
   stroke-width: 0.5;
   transition: 0.5s;
-}
-
-@media screen and (max-width: 767px) {
-  .ag-canvas {
-    -webkit-flex-flow: row wrap;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    height: auto;
-    padding: 4rem 1rem 1rem;
-  }
-  .ag-canvas_svg {
-    max-height: calc(100% - 6rem);
-    margin-left: 0;
-  }
 }
 
 input {
@@ -83,15 +89,35 @@ button {
   text-transform: uppercase;
   outline: 0;
   background: teal;
-  /* float: right;
-  margin-bottom: -100px; */
   border: 0;
   padding: 15px;
   color: #ffffff;
   font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
   cursor: pointer;
+}
+
+button:hover {
+  background: #008080cc;
+}
+
+.add-country-form {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  background-color: rgba(33, 37, 43, 0.8);
+  z-index: 5;
+}
+
+.add-country-form input {
+  flex: 1;
+  margin: 0 10px 0 0;
+}
+
+.add-country-form button {
+  width: 120px;
 }
 
 .total-count {
@@ -103,6 +129,7 @@ button {
   bottom: 0;
 }
 
+/* Family members tab view - now styled for sidebar */
 .tab-view {
   margin: 0;
   padding: 0;
@@ -110,24 +137,89 @@ button {
   outline: none;
   font-size: 0;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
+
 .tab-view > input {
   position: absolute;
   display: none;
 }
+
 .tab-view > label {
   position: relative;
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  border: 0;
+  display: block;
+  margin: 0 10px 10px 10px;
+  padding: 15px 20px;
   outline: none;
   cursor: pointer;
-  transition: all 0.1s;
-  -o-transition: all 0.1s;
-  -ms-transition: all 0.1s;
-  -moz-transition: all 0.1s;
-  -webkit-transition: all 0.1s;
+  transition: all 0.3s;
+  text-align: left;
+  color: black;
+  font-size: 14px;
+  border-left: 4px solid transparent;
+  border-radius: 20px;
+  line-height: normal;
+}
+
+.tab-view > label:hover {
+  filter: brightness(1.2);
+}
+
+.tab-view > input:checked + label {
+  filter: brightness(1.3);
+  border-left: 4px solid white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.add-member-btn {
+  margin-top: auto;
+  padding: 15px 20px;
+  background: #2c313a;
+  color: black;
+  font-size: 14px;
+  text-decoration: none;
+  border-top: 1px solid #383d46;
+  display: block;
+  text-align: center;
+  transition: all 0.3s;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.add-member-btn:hover {
+  background: #383d46;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 767px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 10px 0;
+  }
+  
+  .content {
+    margin-left: 0;
+  }
+  
+  .ag-canvas {
+    padding: 1rem;
+    height: calc(100vh - 200px);
+  }
+  
+  .add-country-form {
+    position: relative;
+    padding: 10px;
+  }
 }
 .tab-view > label i {
   display: block;

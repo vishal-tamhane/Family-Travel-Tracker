@@ -7,14 +7,23 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
+// Direct database configuration to avoid .env issues
 const db = new pg.Client({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  user: "postgres",
+  host: "localhost",
+  database: "world", 
+  password: "vishalt@9699#", // Updated to match .env file
+  port: 5432,
 });
-db.connect();
+
+// Add error handling for database connection
+db.connect()
+  .then(() => {
+    console.log("Successfully connected to PostgreSQL database");
+  })
+  .catch(err => {
+    console.error("Error connecting to database:", err);
+  });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));

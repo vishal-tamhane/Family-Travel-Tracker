@@ -10,44 +10,66 @@
 </head>
 
 <body>
-  <h1>Add a Family Member</h1>
-  <form action="/new" method="post">
-    <p>What's your name?</p>
-    <input type="text" name="name">
+  <div class="form-container">
+    <h1>Add a Family Member</h1>
+    <form action="/new" method="post">
+      <p>What's your name?</p>
+      <input type="text" name="name" placeholder="Enter your name" required>
 
-    <p>Pick a color:</p>
-    <input type="radio" name="color" id="red" value="red" />
-    <label for="red"><span class="red"></span></label>
+      <p>Pick a color:</p>
+      <div class="color-picker">
+        <input type="radio" name="color" id="red" value="red" required />
+        <label for="red"><span class="red"></span></label>
 
-    <input type="radio" name="color" id="green" value="green" />
-    <label for="green"><span class="green"></span></label>
+        <input type="radio" name="color" id="green" value="green" />
+        <label for="green"><span class="green"></span></label>
 
-    <input type="radio" name="color" id="yellow" value="yellow" />
-    <label for="yellow"><span class="yellow"></span></label>
+        <input type="radio" name="color" id="yellow" value="yellow" />
+        <label for="yellow"><span class="yellow"></span></label>
 
-    <input type="radio" name="color" id="olive" value="olive" />
-    <label for="olive"><span class="olive"></span></label>
+        <input type="radio" name="color" id="olive" value="olive" />
+        <label for="olive"><span class="olive"></span></label>
 
-    <input type="radio" name="color" id="orange" value="orange" />
-    <label for="orange"><span class="orange"></span></label>
+        <input type="radio" name="color" id="orange" value="orange" />
+        <label for="orange"><span class="orange"></span></label>
 
-    <input type="radio" name="color" id="teal" value="indigo" />
-    <label for="teal"><span class="teal"></span></label>
+        <input type="radio" name="color" id="teal" value="teal" />
+        <label for="teal"><span class="teal"></span></label>
 
-    <input type="radio" name="color" id="blue" value="blue" />
-    <label for="blue"><span class="blue"></span></label>
+        <input type="radio" name="color" id="blue" value="blue" />
+        <label for="blue"><span class="blue"></span></label>
 
-    <input type="radio" name="color" id="violet" value="violet" />
-    <label for="violet"><span class="violet"></span></label>
+        <input type="radio" name="color" id="violet" value="violet" />
+        <label for="violet"><span class="violet"></span></label>
 
-    <input type="radio" name="color" id="purple" value="purple" />
-    <label for="purple"><span class="purple"></span></label>
+        <input type="radio" name="color" id="purple" value="purple" />
+        <label for="purple"><span class="purple"></span></label>
 
-    <input type="radio" name="color" id="pink" value="pink" />
-    <label for="pink"><span class="pink"></span></label>
-    <div class="spacer"></div>
-    <button type="submit">Add</button>
-  </form>
+        <input type="radio" name="color" id="pink" value="pink" />
+        <label for="pink"><span class="pink"></span></label>
+      </div>
+
+      <button type="submit">Add Member</button>
+    </form>
+  </div>
+  <a href="/" class="back-link">← Back to map</a>
+
+  <script>
+    // Simple animation when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const formContainer = document.querySelector('.form-container');
+      formContainer.style.opacity = '0';
+      formContainer.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        formContainer.style.opacity = '1';
+        formContainer.style.transform = 'translateY(0)';
+      }, 100);
+
+      // Auto-select first color option
+      document.getElementById('red').checked = true;
+    });
+  </script>
 </body>
 
 </html>
