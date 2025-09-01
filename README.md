@@ -9,7 +9,8 @@ A web application that allows families to track and visualize countries visited 
 - PostgreSQL database for persistent storage
 - Real-time updates when adding new countries
 - User-friendly interface for country input
-![ScreenShot](assets/Images/Screenshot%202025-07-21%20180949.png)
+![ScreenShot](assets/Images/image2.png)
+![ScreenShot](assets/Images/image1.png)
 ## Prerequisites
 - Node.js (v14 or higher)
 - PostgreSQL (v12 or higher)
